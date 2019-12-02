@@ -812,13 +812,14 @@ structure:
         "type": "matrix",
         "rows": 5,
         "cols": 1,
-        "data": [1.0,2.0,3.0,4.0,5.0]
+        "data": [1.0,2.0,3.0,4.0,5.0],
+        "complex": [6.0,7.0,8.0,9.0,10.0]
       }
     ]
   }
 
 :success: ``true`` if the proc returned without error and ``false`` if the proc
-  was unable to succesfully complete.
+  was unable to successfully complete.
 
 :output: any output emitted by the program while running. This would include
   the contents of any :func:`print` (implicit or explicit) statement(s) in the
@@ -828,4 +829,76 @@ structure:
   Will always return an array. The JSON objects will follow the same structure
   as JSON objects accepted in the section `POST request with JSON arguments`_
 
+.. NOTE:: Complex values are currently only supported in the response.
 
+Response Formats
+----------------
+
+While the Request mandates the inputs be JSON or raw for scalar types, the
+response allows multiple formats. By default, JSON will be the selected response
+format.
+
+To change the Response format, supply the argument ``fmt`` to the Request and
+specify one of the following as the value:
+
+- json
+- xml
+- raw
+
+.. NOTE:: If *raw* is specified, no markup will be performed and the output, along with
+  the proc results, will be returned as plain text.
+
+Specify format example
+++++++++++++++++++++++
+
+To specify the response type in a *GET* request:
+
+::
+
+  $ curl -X GET http://localhost:5050/hello?name=Bob&fmt=xml
+
+To specify the response type in a *POST* request:
+
+::
+
+  $ curl -X POST -H "Content-Type: application/json" -d '{"name": "Bob", "fmt": "raw"}}' http://localhost:5050/hello
+
+XML Response structure
+++++++++++++++++++++++
+
+An XML response will mimic that of a JSON response:
+
+::
+
+  <?xml version="1.0">
+  <return>
+    <success>1</success>
+    <output>...</output>
+    <results>
+      <result type="matrix" rows="5" cols="1">
+        <data>
+          <values>
+            <value>1.0</value>
+            <value>2.0</value>
+            <value>3.0</value>
+            <value>4.0</value>
+            <value>5.0</value>
+          </values>
+          <complex-values>
+            <value>1.0</value>
+            ...
+            <value>5.0</value>
+          </complex-values>
+        </data>
+      </result>
+      <result ...>
+        ...
+      </result>
+    </results>
+  </return>
+
+Troubleshooting
+===============
+
+Please contact support@aptech.com or submit a support ticket at
+https://www.aptech.com/support/submit-support-ticket/ for additional help.
