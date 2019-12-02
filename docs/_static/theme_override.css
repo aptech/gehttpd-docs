@@ -1,0 +1,35 @@
+/* override table width restrictions */
+@media screen and (min-width: 767px) {
+
+   .wy-table-responsive table td {
+      /* !important prevents the common CSS stylesheets from overriding
+         this as on RTD they are loaded after this stylesheet */
+      white-space: normal !important;
+   }
+
+   .wy-table-responsive {
+      overflow: visible !important;
+   }
+}
+
+.menuselection { font-weight: bold; }
+
+.rst-versions a { color:#455560; }
+.wy-tray-container li.wy-tray-item-info { background:#455560; }
+.btn-info { background-color:#455560; }
+.btn-link { color:#455560; }
+.wy-dropdown-menu > dd > a:hover { background:#455560; }
+.wy-dropdown.wy-dropdown-bubble .wy-dropdown-menu a:hover { background:#455560; }
+.wy-inline-validate.wy-inline-validate-info .wy-input-context { color:#455560; }
+a { color:#455560; }
+.wy-text-info { color:#455560; }
+.wy-menu-vertical a:active { background-color:#455560; }
+.wy-side-nav-search img { background-color:#455560; }
+.wy-nav .wy-menu-vertical header { color:#455560; }
+.wy-nav-top { background:#455560; }
+.wy-nav-top img { background-color:#455560; }
+.rst-content a tt,.rst-content a tt,.rst-content a code { color:#455560; }
+.rst-content dl:not(.docutils) dt { color: #455560; background-color: rgb(248, 248, 248); border: 1px solid #e1e4e5; border-top-color: #455560; border-top-width: 3px; padding: 12px; }
+div.section#format div.highlight-gauss { border-top-width: 3px; border-top-color: #455560; }
+dt code.descname { color: #00557f; }
+
