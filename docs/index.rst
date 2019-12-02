@@ -72,8 +72,10 @@ Linux
 +++++
 
 Make sure all the necessary dependencies are installed. You can run
-``ldd chrome | grep not`` on a Linux machine to check which dependencies are
-missing.
+``ldd gehttpd | grep not`` on a Linux machine to check which dependencies are
+missing. Keep in mind the :file:`run.sh` script will set appropriate environment 
+variables for locating dependencies bundled with GEhttpd. ``ldd`` should be used
+for locating missing system dependencies.
 
 - Tested on Debian 9 and 10, as well as CentOS 6 and 7.
 - Ubuntu and OpenSuSE should also run it as well, though not all versions have
