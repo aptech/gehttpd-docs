@@ -584,7 +584,7 @@ Once the :file:`etc/gehttpd.ini` file has been configured, GEhttpd can be
 started with the provided :file:`run.sh` (Linux) or :file:`run.bat` file.
 
 Executing this in the terminal will set the appropriate environment variables
-and start the server. It is recommended that at least on Linux this is ran in
+and start the server. It is recommended that at least on Linux this is run in
 a ``screen`` or ``tmux`` session, as only launching as a background task with
 ``&`` will still end the process upon logging out of the ssh session that
 started it.
