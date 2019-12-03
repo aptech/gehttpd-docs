@@ -630,8 +630,13 @@ GET The most basic method: arguments are passed in the URL as ``key=value`` pair
 starting after a ``?`` character, with additional pairs separated by the ``&``
 character.
 
-#. ``curl -X GET http://localhost:5050/hello?name=Bob``
-#. ``curl -X GET http://localhost:5050/add?a=5&b=10``
+#. .. code-block:: bash
+
+     $ curl -X GET http://localhost:5050/hello?name=Bob
+
+#. .. code-block:: bash
+
+     $ curl -X GET http://localhost:5050/add?a=5&b=10
 
 RESTful requests are technically just requests using the GET method, but embed
 the key in locations of the URL indicated by the predefined ``route`` pattern.
@@ -753,8 +758,7 @@ Note that because we're using the body of the request, the JSON document
 .. code-block:: json
 
   {
-    "name":
-    {
+    "name": {
       "type": "scalar/matrix/string/string array",
       "rows": n,
       "cols": m,
