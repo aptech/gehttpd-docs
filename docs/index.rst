@@ -73,7 +73,7 @@ Linux
 
 Make sure all the necessary dependencies are installed. You can run
 ``ldd gehttpd | grep not`` on a Linux machine to check which dependencies are
-missing. Keep in mind the :file:`run.sh` script will set appropriate environment 
+missing. Keep in mind the :file:`run.sh` script will set appropriate environment
 variables for locating dependencies bundled with GEhttpd. ``ldd`` should be used
 for locating missing system dependencies.
 
@@ -129,8 +129,6 @@ Once this is complete, the section `Running the Server` can be read.
 Configuration
 =============
 
-For basic purposes of running files other than the provided example files
-
 The following are all sections listed sequentially in the
 :file:`etc/gehttpd.ini` configuration file and list each key's default value.
 
@@ -152,24 +150,23 @@ The following are all sections listed sequentially in the
   asynchronous=1
 
 :host: The network interface to listen on when starting the web server. The
-  default behavior is to bind to all available network interfaces. Uncomment
-  the line and use *127.0.0.1* to prevent responding to requests from any
-  outside sources.
+   default behavior is to bind to all available network interfaces. Uncomment
+   the line and use *127.0.0.1* to prevent responding to requests from any
+   outside sources.
 
 :port: The default port to bind to. If running behind Apache or nginx as a
-  Reverse Proxy, do **not** set this to 80 or 443.
+   Reverse Proxy, do **not** set this to 80 or 443.
 
 :minThreads: The minimum number of threads to be reserved by the connection
-  pool when waiting for requests. Ignored if `asynchronous` is set to 0.
+   pool when waiting for requests. Ignored if `asynchronous` is set to 0.
 
 :maxThreads: The maximum number of threads allowed for the connection pool to
    spawn when responding to requests. Ignored if `asynchronous` is set to 0.
 
 :cleanupInterval: How often the connection pool is cleaned up. Removes idle
-  threads until `minThreads` is reached. Ignored if `asynchronous` is set to 0.
+   threads until `minThreads` is reached. Ignored if `asynchronous` is set to 0.
 
-:readTimeout: Duration connection will remain idle before timing out
-  automatically.
+:readTimeout: Duration connection will remain idle before timing out automatically.
 
 :sslKeyFile: Path to the SSL private key. Expects RSA key in PEM format.
 
@@ -178,13 +175,13 @@ The following are all sections listed sequentially in the
 :maxRequestSize: The maximum size of a HTTP request in bytes.
 
 :maxMultiPartSize: The maximum size of the body of a multipart/form-data
-  HTTP request in bytes.
+   HTTP request in bytes.
 
 :asynchronous: Whether a thread pool is used for handling incoming requests.
-  If this is set 0 then all incoming requests are handled sequentially and ran
-  in the main server thread. This should be used for special use-cases where
-  the app server needs all requests to run through the main thread, such as
-  running procedures that generate graphs.
+   If this is set 0 then all incoming requests are handled sequentially and run
+   in the main server thread. This should be used for special use-cases where
+   the app server needs all requests to run through the main thread, such as
+   running procedures that generate graphs.
 
 [gehttpd]
 ---------
@@ -409,7 +406,7 @@ handle them and return a response.
 
 A sample web request might have the following steps:
 
-#. The client sends a request to GEhttpd
+#. The client sends a request to GEhttpd.
 #. GEhttpd looks at the URL in the request and determines which GAUSS procedure
    to run. The arguments from the request are passed to the GAUSS procedure and
    the function is evaluated.
@@ -420,7 +417,7 @@ We define these endpoints directly in GAUSS code, and the files that make up
 these definitions are specified the ``filenames`` key of the
 :file:`gehttpd.ini` configuration file.
 
-A URL route to GAUSS proc mapping consists of 3 steps:
+A URL route to a GAUSS proc mapping consists of 3 steps:
 
 #. Include the :file:`gehttpdroutes.src` file. This is only necessary once per
    source file.
