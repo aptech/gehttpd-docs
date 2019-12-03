@@ -163,8 +163,7 @@ The following are all sections listed sequentially in the
 :maxThreads: The maximum number of threads allowed for the connection pool to
    spawn when responding to requests. Ignored if `asynchronous` is set to 0.
 
-:cleanupInterval: How often the connection pool is cleaned up. Removes idle
-   threads until `minThreads` is reached. Ignored if `asynchronous` is set to 0.
+:cleanupInterval: How often the connection pool is cleaned up. Removes idle threads until `minThreads` is reached. Ignored if `asynchronous` is set to 0.
 
 :readTimeout: Duration connection will remain idle before timing out automatically.
 
@@ -174,8 +173,7 @@ The following are all sections listed sequentially in the
 
 :maxRequestSize: The maximum size of a HTTP request in bytes.
 
-:maxMultiPartSize: The maximum size of the body of a multipart/form-data
-   HTTP request in bytes.
+:maxMultiPartSize: The maximum size of the body of a multipart/form-data HTTP request in bytes.
 
 :asynchronous: Whether a thread pool is used for handling incoming requests.
    If this is set 0 then all incoming requests are handled sequentially and run
