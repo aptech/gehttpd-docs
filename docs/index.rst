@@ -83,20 +83,20 @@ for locating missing system dependencies.
 
 For Debian based (e.g. Ubuntu systems);
 
-::
+.. code-block:: bash
 
   sudo apt install libglu1-mesa libxcomposite1 libxrender1 libfontconfig1
 
 ``xvfb`` may be required on headless systems:
 
-::
+.. code-block:: bash
 
   sudo apt install libxi6 xvfb
 
 In lieu of that, enable user namespace cloning in the kernel with the
 following command:
 
-::
+.. code-block:: bash
 
   sudo sysctl -w kernel.unprivileged_userns_clone=1
 
@@ -116,7 +116,7 @@ provided example files.
 - Set the value of the **gehttpd > home** key to the installation directory of
   the GAUSS Engine:
 
-  ::
+  .. code-block:: ini
 
     [gehttpd]
     home=/home/research/gauss20
@@ -135,7 +135,7 @@ The following are all sections listed sequentially in the
 [listener]
 ----------
 
-::
+.. code-block:: ini
 
   ;host=127.0.0.1
   port=5050
@@ -184,7 +184,7 @@ The following are all sections listed sequentially in the
 [gehttpd]
 ---------
 
-::
+.. code-block:: ini
 
   home=/home/research/mteng20
   filenames=test/sample.e|test/echo.e
@@ -212,7 +212,7 @@ The following are all sections listed sequentially in the
 [templates]
 -----------
 
-::
+.. code-block:: ini
 
   path=templates
   suffix=.tpl
@@ -235,7 +235,7 @@ The following are all sections listed sequentially in the
 [docroot]
 ---------
 
-::
+.. code-block:: ini
 
   path=docroot
   encoding=UTF-8
@@ -263,7 +263,7 @@ The following are all sections listed sequentially in the
 [sessions]
 ----------
 
-::
+.. code-block:: ini
 
   expirationTime=3600000
   cookieName=gehttpd
@@ -289,7 +289,7 @@ The following are all sections listed sequentially in the
 [logging]
 ---------
 
-::
+.. code-block:: ini
 
   fileName=../logs/gehttpd.log
   minLevel=1
@@ -583,6 +583,14 @@ Running the Server
 Once the :file:`etc/gehttpd.ini` file has been configured, GEhttpd can be
 started with the provided :file:`run.sh` (Linux) or :file:`run.bat` file.
 
+.. code-block:: bash
+
+  $ ./run.sh
+
+.. code-block:: bat
+
+  C:\gehttpd> run.bat
+
 Executing this in the terminal will set the appropriate environment variables
 and start the server. It is recommended that at least on Linux this is run in
 a ``screen`` or ``tmux`` session, as only launching as a background task with
@@ -630,9 +638,13 @@ the key in locations of the URL indicated by the predefined ``route`` pattern.
 
 Example from the previous *add* route:
 
-#. ``curl -X GET http://localhost:5050/add/5/10``
-#. ``curl -X GET http://localhost:5050/add/5/plus/10``
+#. .. code-block:: bash
 
+     $ curl -X GET http://localhost:5050/add/5/10
+
+#. .. code-block:: bash
+
+     $ curl -X GET http://localhost:5050/add/5/plus/10
 
 POST request
 ------------
@@ -640,8 +652,13 @@ POST request
 POST requests embed the key=value pairs in the body of the request. They are
 not visible directly in the URL.
 
-#. ``curl -X POST -d "name=Bob" http://localhost:5050/hello``
-#. ``curl -X POST -d "a=5&b=10" http://localhost:5050/add``
+#. .. code-block:: bash
+
+     $ curl -X POST -d "name=Bob" http://localhost:5050/hello
+
+#. .. code-block:: bash
+
+     $ curl -X POST -d "a=5&b=10" http://localhost:5050/add
 
 POST request with JSON arguments
 --------------------------------
@@ -682,7 +699,7 @@ A few examples are below:
 Numeric vector argument
 +++++++++++++++++++++++
 
-::
+.. code-block:: json
 
   {
     "type": "matrix",
@@ -694,7 +711,7 @@ We can include the ``rows`` and ``cols`` keys to specify the dimensions:
 Matrix with rows and columns
 ++++++++++++++++++++++++++++
 
-::
+.. code-block:: json
 
   {
     "type": "matrix",
@@ -706,7 +723,7 @@ Matrix with rows and columns
 String array
 ++++++++++++++++++++++++++++
 
-::
+.. code-block:: json
 
   {
     "type": "string array",
@@ -716,7 +733,7 @@ String array
 string
 ++++++++++++++++++++++++++++
 
-::
+.. code-block:: json
 
   {
     "type": "string array",
@@ -733,7 +750,7 @@ convert a dictionary to a JSON object, ease-of-use passing data to GEhttpd.
 Note that because we're using the body of the request, the JSON document
 **keys** represent the input argument names:
 
-::
+.. code-block:: json
 
   {
     "name":
@@ -770,28 +787,28 @@ Note that because we're using the body of the request, the JSON document
 :data: appropriate JSON data type based on symbol type described in `type`
   field.
 
-#. ::
+#. .. code-block:: bash
 
-       $ curl -X POST -H "Content-Type: application/json" -d '{"name": "Bob"}}' http://localhost:5050/hello
-#. ::
+     $ curl -X POST -H "Content-Type: application/json" -d '{"name": "Bob"}}' http://localhost:5050/hello
+#. .. code-block:: bash
 
-       $ curl -X POST -H "Content-Type: application/json" -d '{"a": 5, "b": 10}}' http://localhost:5050/add
-#. ::
+     $ curl -X POST -H "Content-Type: application/json" -d '{"a": 5, "b": 10}}' http://localhost:5050/add
+#. .. code-block:: bash
 
-       $ curl -X POST -H "Content-Type: application/json" -d '{"a": {"type": "matrix", "data": [1, 2, 3, 4], "rows": 2, "cols": 2}, "b": 10}}' http://localhost:5050/add
+     $ curl -X POST -H "Content-Type: application/json" -d '{"a": {"type": "matrix", "data": [1, 2, 3, 4], "rows": 2, "cols": 2}, "b": 10}}' http://localhost:5050/add
 
 GEhttpd can also deduce a pure numeric vector and automatically treat it as a
 matrix:
 
-#. ::
+#. .. code-block:: bash
 
-       $ curl -X POST -H "Content-Type: application/json" -d '{"a": [1, 2, 3, 4]}, "b": 10}}' http://localhost:5050/add
+     $ curl -X POST -H "Content-Type: application/json" -d '{"a": [1, 2, 3, 4]}, "b": 10}}' http://localhost:5050/add
 
 or as a string array vector:
 
-#. ::
+#. .. code-block:: bash
 
-       $ curl -X POST -H "Content-Type: application/json" -d '{"name": ["Bob", "Alice", "Mike"]}' http://localhost:5050/hello
+     $ curl -X POST -H "Content-Type: application/json" -d '{"name": ["Bob", "Alice", "Mike"]}' http://localhost:5050/hello
 
 The Response
 ============
@@ -799,7 +816,7 @@ The Response
 A successful response will by default return a JSON object with the following
 structure:
 
-::
+.. code-block:: json
 
   {
     "success": true,
@@ -850,49 +867,49 @@ Specify format example
 
 To specify the response type in a *GET* request:
 
-::
+.. code-block:: bash
 
-  $ curl -X GET http://localhost:5050/hello?name=Bob&fmt=xml
+   $ curl -X GET http://localhost:5050/hello?name=Bob&fmt=xml
 
 To specify the response type in a *POST* request:
 
-::
+.. code-block:: bash
 
-  $ curl -X POST -H "Content-Type: application/json" -d '{"name": "Bob", "fmt": "raw"}}' http://localhost:5050/hello
+   $ curl -X POST -H "Content-Type: application/json" -d '{"name": "Bob", "fmt": "raw"}}' http://localhost:5050/hello
 
 XML Response structure
 ++++++++++++++++++++++
 
 An XML response will mimic that of a JSON response:
 
-::
+.. code-block:: xml
 
-  <?xml version="1.0">
-  <return>
-    <success>1</success>
-    <output>...</output>
-    <results>
-      <result type="matrix" rows="5" cols="1">
-        <data>
-          <values>
-            <value>1.0</value>
-            <value>2.0</value>
-            <value>3.0</value>
-            <value>4.0</value>
-            <value>5.0</value>
-          </values>
-          <complex-values>
-            <value>1.0</value>
-            ...
-            <value>5.0</value>
-          </complex-values>
-        </data>
-      </result>
-      <result ...>
-        ...
-      </result>
-    </results>
-  </return>
+   <?xml version="1.0">
+   <return>
+     <success>1</success>
+     <output>...</output>
+     <results>
+       <result type="matrix" rows="5" cols="1">
+          <data>
+           <values>
+             <value>1.0</value>
+             <value>2.0</value>
+             <value>3.0</value>
+             <value>4.0</value>
+             <value>5.0</value>
+           </values>
+           <complex-values>
+             <value>1.0</value>
+             ...
+             <value>5.0</value>
+           </complex-values>
+         </data>
+       </result>
+       <result ...>
+         ...
+       </result>
+     </results>
+   </return>
 
 Troubleshooting
 ===============
