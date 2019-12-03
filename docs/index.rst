@@ -109,11 +109,14 @@ Windows
 Quick Start
 ===========
 
+First copy the template configuration file :file:`etc/gehttpd.ini.sample` to
+:file:`etc/gehttpd.ini`.
+
 After the previous `Installation` instructions are complete, only one key
 modification is required to the :file:`etc/gehttpd.ini` file to run the
 provided example files.
 
-- Set the value of the **gehttpd > home** key to the installation directory of
+- Set the value of the **[gehttpd] > home** key to the installation directory of
   the GAUSS Engine:
 
   .. code-block:: ini
@@ -128,6 +131,9 @@ Once this is complete, the section `Running the Server` can be read.
 
 Configuration
 =============
+
+Ensure that you have copied the template configuration file
+:file:`etc/gehttpd.ini.sample` to :file:`etc/gehttpd.ini`.
 
 The following are all sections listed sequentially in the
 :file:`etc/gehttpd.ini` configuration file and list each key's default value.
