@@ -822,6 +822,33 @@ or as a string array vector:
 
      $ curl -X POST -H "Content-Type: application/json" -d "{\"name\": [\"Bob\", \"Alice\", \"Mike\"]}" http://localhost:5050/hello
 
+Persistent requests with cURL (Sessions)
+----------------------------------------
+
+Testing requests that make use of persistence, or sessions, like the example illustrated in :file:`sample.e`, requires additional arguments to cURL.
+
+Note that persistence is disabled by default, but can be enabled in the :file:`gehttpd.ini` file by modifying the following value:
+
+.. code-block:: ini
+
+  persistentWorkspace=1
+
+Per the cURL documentation, we can include both the ``-b`` and ``-c`` flags. These instruct cURL to use the specified file
+for both reading cookie information prior to the request, and writing received cookies after a request is completed. Using these
+flags, we can mimic the behavior of a browser, which does this automatically for us.
+
+.. code-block:: bash
+
+  # Increase x by 1 and show current value
+  curl -b gehttpdcookie -c gehttpdcookie -X GET http://localhost:5050/inc
+
+  # Increase x by 1 and show current value
+  curl -b gehttpdcookie -c gehttpdcookie -X GET http://localhost:5050/inc
+
+  # Show final value of x
+  curl -b gehttpdcookie -c gehttpdcookie -X GET http://localhost:5050/whatisx
+
+
 The Response
 ============
 
