@@ -799,26 +799,28 @@ Note that because we're using the body of the request, the JSON document
 
 #. .. code-block:: bash
 
-     $ curl -X POST -H "Content-Type: application/json" -d '{"name": "Bob"}}' http://localhost:5050/hello
+     $ curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"Bob\"}" http://localhost:5050/hello
+
 #. .. code-block:: bash
 
-     $ curl -X POST -H "Content-Type: application/json" -d '{"a": 5, "b": 10}}' http://localhost:5050/add
+     $ curl -X POST -H "Content-Type: application/json" -d "{\"a\": 5, \"b\": 10}" http://localhost:5050/add
+
 #. .. code-block:: bash
 
-     $ curl -X POST -H "Content-Type: application/json" -d '{"a": {"type": "matrix", "data": [1, 2, 3, 4], "rows": 2, "cols": 2}, "b": 10}}' http://localhost:5050/add
+     $ curl -X POST -H "Content-Type: application/json" -d "{\"a\": {\"type\": \"matrix\", \"data\": [1, 2, 3, 4], \"rows\": 2, \"cols\": 2}, \"b\": 10}" http://localhost:5050/add
 
 GEhttpd can also deduce a pure numeric vector and automatically treat it as a
 matrix:
 
 #. .. code-block:: bash
 
-     $ curl -X POST -H "Content-Type: application/json" -d '{"a": [1, 2, 3, 4]}, "b": 10}}' http://localhost:5050/add
+     $ curl -X POST -H "Content-Type: application/json" -d "{\"a\": [1, 2, 3, 4], \"b\": 10}" http://localhost:5050/add
 
 or as a string array vector:
 
 #. .. code-block:: bash
 
-     $ curl -X POST -H "Content-Type: application/json" -d '{"name": ["Bob", "Alice", "Mike"]}' http://localhost:5050/hello
+     $ curl -X POST -H "Content-Type: application/json" -d "{\"name\": [\"Bob\", \"Alice\", \"Mike\"]}" http://localhost:5050/hello
 
 The Response
 ============
@@ -885,7 +887,7 @@ To specify the response type in a *POST* request:
 
 .. code-block:: bash
 
-   $ curl -X POST -H "Content-Type: application/json" -d '{"name": "Bob", "fmt": "raw"}}' http://localhost:5050/hello
+   $ curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"Bob\", \"fmt\": \"raw\"}" http://localhost:5050/hello
 
 XML Response structure
 ++++++++++++++++++++++
