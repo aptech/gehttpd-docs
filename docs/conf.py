@@ -108,7 +108,7 @@ html_context = {
         '_static/theme_override.css',  # override wide tables in RTD theme
     ],
     'canonical_url': 'https://docs.aptech.com/gehttpd/',
-    'PRODUCTION_DOMAIN': "docs.aptech.com',
+    'PRODUCTION_DOMAIN': 'docs.aptech.com',
 }
 
 html_logo = '_static/images/gauss_logo.png'
