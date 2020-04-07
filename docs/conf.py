@@ -121,7 +121,7 @@ html_theme_options = {
 
 html_baseurl = 'https://docs.aptech.com/gehttpd/'
 
-html_short_title = '<project> <revision> documentation'
+html_short_title = '{} {} documentation'.format(project, version)
 html_title = html_short_title + ' | Aptech'
 
 # Custom sidebar templates, must be a dictionary that maps document names
