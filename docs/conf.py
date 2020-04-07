@@ -116,7 +116,13 @@ html_theme_options = {
     'style_external_links': True,
     'style_nav_header_background': '#455560',
     'logo_only': True,
+    'canonical_url': 'https://docs.aptech.com/gehttpd/'
 }
+
+html_baseurl = 'https://docs.aptech.com/gehttpd/'
+
+html_short_title = '<project> <revision> documentation'
+html_title = html_short_title + ' | Aptech'
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
