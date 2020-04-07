@@ -107,8 +107,6 @@ html_context = {
     'css_files': [
         '_static/theme_override.css',  # override wide tables in RTD theme
     ],
-    'canonical_url': 'https://docs.aptech.com/gehttpd/',
-    'PRODUCTION_DOMAIN': 'docs.aptech.com',
 }
 
 html_logo = '_static/images/gauss_logo.png'
@@ -118,6 +116,7 @@ html_theme_options = {
     'style_external_links': True,
     'style_nav_header_background': '#455560',
     'logo_only': True,
+    'canonical_url': 'https://docs.aptech.com/gehttpd/',
 }
 
 html_baseurl = 'https://docs.aptech.com/gehttpd/'
