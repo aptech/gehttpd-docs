@@ -1,7 +1,7 @@
 gehttpd
 *******
 
-.. title:: Explore gehttpd documentation | Aptech
+.. title:: Home
 
 .. meta::
    :description: Looking for additional resources about gehttpd, the standalone web server for the GAUSS Engine? Learn more about how to set up, run, and modify examples to run GAUSS procedures remotely. Find gehttpd documentation here. 
