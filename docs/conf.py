@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'GEhttpd'
+project = 'gehttpd'
 copyright = '2020, Aptech Systems, Inc'
 author = 'Aptech Systems, Inc'
 

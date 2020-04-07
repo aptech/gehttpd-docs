@@ -1,5 +1,8 @@
-GEhttpd
+gehttpd
 *******
+
+.. meta::
+   :description: Looking for additional resources about gehttpd, the standalone web server for the GAUSS Engine? Learn more about how to set up, run, and modify examples to run GAUSS procedures remotely. Find gehttpd documentation here. 
 
 .. toctree::
    :maxdepth: 4
@@ -9,7 +12,7 @@ GEhttpd
 Introduction
 ============
 
-GEhttpd is a lightweight multi-threaded web server written in C++/Qt and
+gehttpd is a lightweight multi-threaded web server written in C++/Qt and
 directly integrated with the GAUSS Engine. It allows users to implement their
 algorithms in the `GAUSS <https://www.aptech.com>`_ matrix programming
 language, and run those procedures with arguments supplied by requests to the
@@ -24,7 +27,7 @@ features are:
 #. Logging
 #. Templating (for internal usage)
 
-Below are two popular use-cases where one might use GEhttpd to run GAUSS code:
+Below are two popular use-cases where one might use gehttpd to run GAUSS code:
 
 Web browser workflow
 --------------------
@@ -33,7 +36,7 @@ A common scenario with the web browser client might be scripts executing on a
 page with real-time input from the user to run algorithms return the result.
 
 .. image:: _static/images/engine2.png
-   :alt: GEhttpd workflow
+   :alt: gehttpd workflow
    :width: 1372px
    :height: 323px
    :scale: 50%
@@ -47,7 +50,7 @@ as the application server would be running on an internal network, but placing
 Apache or nginx in front allows for greater flexibility and security.
 
 .. image:: _static/images/engine3.png
-   :alt: GEhttpd workflow
+   :alt: gehttpd workflow
    :width: 1372px
    :height: 323px
    :scale: 50%
@@ -56,10 +59,10 @@ Apache or nginx in front allows for greater flexibility and security.
 Installation
 ============
 
-All file paths specified will assume the root is the directory `GEhttpd` was
+All file paths specified will assume the root is the directory `gehttpd` was
 installed to.
 
-#. Extract the GEhttpd archive file (:file:`gehttpd.tar.gz` or
+#. Extract the gehttpd archive file (:file:`gehttpd.tar.gz` or
    :file:`gehttpd.zip`) to a directory of your choice.
 
 #. Rename the file :file:`etc/gehttpd.ini.sample` to :file:`etc/gehttpd.ini`
@@ -74,7 +77,7 @@ Linux
 Make sure all the necessary dependencies are installed. You can run
 ``ldd gehttpd | grep not`` on a Linux machine to check which dependencies are
 missing. Keep in mind the :file:`run.sh` script will set appropriate environment
-variables for locating dependencies bundled with GEhttpd. ``ldd`` should be used
+variables for locating dependencies bundled with gehttpd. ``ldd`` should be used
 for locating missing system dependencies.
 
 - Tested on Debian 9 and 10, as well as CentOS 6 and 7.
@@ -197,7 +200,7 @@ The following are all sections listed sequentially in the
   persistentWorkspace=0
 
 :home: The full path to the installation directory of the GAUSS Engine.
-  This is required and GEhttpd will fail to run if not set properly.
+  This is required and gehttpd will fail to run if not set properly.
 
 :filenames: A list of filenames separated by the pipe ``|`` character. These paths
   are relative to the gehttpd installation directory. Each file will be
@@ -404,14 +407,14 @@ The following are all sections listed sequentially in the
 Define URL Endpoints (Routes)
 =============================
 
-Endpoints are the core of request-handling in GEhttpd, and are simply
+Endpoints are the core of request-handling in gehttpd, and are simply
 definitions for how to direct requests to the appropriate GAUSS procedures to
 handle them and return a response.
 
 A sample web request might have the following steps:
 
-#. The client sends a request to GEhttpd.
-#. GEhttpd looks at the URL in the request and determines which GAUSS procedure
+#. The client sends a request to gehttpd.
+#. gehttpd looks at the URL in the request and determines which GAUSS procedure
    to run. The arguments from the request are passed to the GAUSS procedure and
    the function is evaluated.
 #. The result is encoded in the requested format (json, xml, or raw [plain]) and
@@ -426,7 +429,7 @@ A URL route to a GAUSS proc mapping consists of 3 steps:
 #. Include the :file:`gehttpdroutes.src` file. This is only necessary once per
    source file.
 #. Define the GAUSS procedure (proc)
-#. Use the :func:`route` function to tell GEhttpd how to handle the proc and
+#. Use the :func:`route` function to tell gehttpd how to handle the proc and
    associated URL path.
 
 The :func:`route` function takes the following form:
@@ -453,7 +456,7 @@ Parameters
   GAUSS proc.
 
   .. NOTE:: Prefixing an argument with a specific character can change the way
-    GEhttpd treats the argument when processing the request. The below table
+    gehttpd treats the argument when processing the request. The below table
     shows the available prefixes and the corresponding type coercion that
     occurs. This allows routes to ensure that arguments come in as the
     anticipated type. The exception to this is the ``@`` prefix, as this
@@ -586,7 +589,7 @@ Note the multiple ways of calling the same GAUSS proc.
 Running the Server
 ==================
 
-Once the :file:`etc/gehttpd.ini` file has been configured, GEhttpd can be
+Once the :file:`etc/gehttpd.ini` file has been configured, gehttpd can be
 started with the provided :file:`run.sh` (Linux) or :file:`run.bat` file.
 
 .. code-block:: bash
@@ -603,7 +606,7 @@ a ``screen`` or ``tmux`` session, as only launching as a background task with
 ``&`` will still end the process upon logging out of the ssh session that
 started it.
 
-If executing GEhttpd with ``xvfb``, the following command use a 1920x1080
+If executing gehttpd with ``xvfb``, the following command use a 1920x1080
 buffer by default:
 
 ::
@@ -626,7 +629,7 @@ nginx
 Making a Request
 ================
 
-The following are valid methods of constructing a request that GEhttpd will
+The following are valid methods of constructing a request that gehttpd will
 understand.
 
 GET / RESTful requests
@@ -756,7 +759,7 @@ POST request with JSON body
 
 Quite possibly the most flexible for dealing with various symbols, a full JSON
 body gives us quite a bit of flexibility and due to many languages being able to
-convert a dictionary to a JSON object, ease-of-use passing data to GEhttpd.
+convert a dictionary to a JSON object, ease-of-use passing data to gehttpd.
 
 Note that because we're using the body of the request, the JSON document
 **keys** represent the input argument names:
@@ -809,7 +812,7 @@ Note that because we're using the body of the request, the JSON document
 
      $ curl -X POST -H "Content-Type: application/json" -d "{\"a\": {\"type\": \"matrix\", \"data\": [1, 2, 3, 4], \"rows\": 2, \"cols\": 2}, \"b\": 10}" http://localhost:5050/add
 
-GEhttpd can also deduce a pure numeric vector and automatically treat it as a
+gehttpd can also deduce a pure numeric vector and automatically treat it as a
 matrix:
 
 #. .. code-block:: bash
